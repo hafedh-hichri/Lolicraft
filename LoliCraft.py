@@ -71,7 +71,8 @@ class Hand(Entity):
             model = 'assets/arm',
             texture = arm_txt,
             scale = 0.2,
-            rotation = Vec3(-150,-10,0)
+            rotation = Vec3(-150,-10,0),
+            position = Vec2(0.4,-0.6)
         )
 
 ## Generates the ground
