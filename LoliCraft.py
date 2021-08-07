@@ -12,6 +12,11 @@ brick_txt      = load_texture('assets/brick_block.png')
 sky_txt        = load_texture('assets/skybox.png')
 arm_txt        = load_texture('assets/arm_texture.png')
 
+## Audio
+punch_sfx      = Audio("assets/punch_sound",loop = False, autoplay = False)
+
+
+
 block_selected = 1
 
 ## Checks which button is pressed
@@ -46,6 +51,7 @@ class Voxel(Button):
         if self.hovered:
             ## left mouse button
             if key == 'left mouse down':
+                punch_sfx.play()
                 ## Checks what block has been selected base from keyboard input
                 if block_selected == 1:
                     voxel = Voxel(position = self.position + mouse.normal, texture = grass_txt)
@@ -57,6 +63,7 @@ class Voxel(Button):
                     voxel = Voxel(position = self.position + mouse.normal, texture = brick_txt)
             ## right mouse button
             if key == 'right mouse down':
+                punch_sfx.play()
                 destroy(self)
 ################################################################################
 class Skybox(Entity):
