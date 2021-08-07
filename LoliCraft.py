@@ -16,6 +16,11 @@ block_selected = 1
 
 ## Checks which button is pressed
 def update():
+    if held_keys['left mouse'] or held_keys['right mouse']:
+        hand.active()
+    else:
+        hand.passive()
+
     global block_selected
     if held_keys['1']: block_selected = 1
     if held_keys['2']: block_selected = 2
@@ -74,6 +79,10 @@ class Hand(Entity):
             rotation = Vec3(-150,-10,0),
             position = Vec2(0.4,-0.6)
         )
+    def active(self):
+        self.position = Vec2(0.3,-0.5)
+    def passive(self):
+        self.position = Vec2(0.4,-0.6)
 
 ## Generates the ground
 for z in range(20):
