@@ -1,5 +1,5 @@
 # Lolicraft
-A Minecraft inspired game running on Ursina Game engine (a python based engine)
+A Minecraft inspired game running on Ursina Game Engine (a python based game engine)
 
 ## Status
 
