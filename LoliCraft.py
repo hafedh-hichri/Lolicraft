@@ -16,8 +16,17 @@ arm_txt        = load_texture('assets/arm_texture.png')
 ## AUDIO
 punch_sfx      = Audio("assets/punch_sound",loop = False, autoplay = False)
 ## ambient noise / cicadas ambient sfx
-#game_sfx       = Audio("assets/cicada_sfx",Loop = True, autoplay = True)
+game_sfx       = Audio("assets/cicada_sfx",loop = True, autoplay = True)
 
+## plays cicada ambient music
+##dumb me realized it should be loop not Loop, so this is now useless.
+#audio_amb = 1
+#def audamb():
+#    while audio_amb == 1:
+#        game_sfx.play()
+#    else:
+#        game_sfx.play()
+#
 block_selected = 1
 ## Checks which button is pressed
 def update():
@@ -34,7 +43,7 @@ def update():
 
 ## Voxels ######################################################################
 ## plays the cicada sfx on load of the game
-#game_sfx.play()
+game_sfx.play()
 class Voxel(Button):
     def __init__(self, position = (0,0,0), texture = grass_txt):
         super().__init__(
@@ -96,8 +105,8 @@ class Hand(Entity):
         self.position = Vec2(0.4,-0.6)
 
 ## Generates the ground
-for z in range(20):
-    for x in range(20):
+for z in range(25):
+    for x in range(25):
         voxel = Voxel(position = (x,0,z))
 
 ## The player in 1st person perspective
