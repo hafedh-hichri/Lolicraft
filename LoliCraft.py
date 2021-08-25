@@ -1,9 +1,10 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
-## to start the game
+
 app = Ursina()
 
 ## Definitions #################################################################
+
 ## TEXTURES
 grass_txt      = load_texture('assets/grass_block.png')
 dirt_txt       = load_texture('assets/dirt_block.png')
@@ -12,13 +13,12 @@ brick_txt      = load_texture('assets/brick_block.png')
 sky_txt        = load_texture('assets/skybox.png')
 arm_txt        = load_texture('assets/arm_texture.png')
 
-## Audio
+## AUDIO
 punch_sfx      = Audio("assets/punch_sound",loop = False, autoplay = False)
-
-
+## ambient noise / cicadas ambient sfx
+#game_sfx       = Audio("assets/cicada_sfx",Loop = True, autoplay = True)
 
 block_selected = 1
-
 ## Checks which button is pressed
 def update():
     if held_keys['left mouse'] or held_keys['right mouse']:
@@ -33,6 +33,8 @@ def update():
     if held_keys['4']: block_selected = 4
 
 ## Voxels ######################################################################
+## plays the cicada sfx on load of the game
+#game_sfx.play()
 class Voxel(Button):
     def __init__(self, position = (0,0,0), texture = grass_txt):
         super().__init__(
@@ -65,7 +67,9 @@ class Voxel(Button):
             if key == 'right mouse down':
                 punch_sfx.play()
                 destroy(self)
+
 ################################################################################
+
 class Skybox(Entity):
     def __init__(self):
         super().__init__(
